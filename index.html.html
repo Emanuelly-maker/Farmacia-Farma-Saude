@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaSaúde</title>
+    <style>
+      /* ===================== RESET E GERAL ===================== */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #333333; 
+        background-color: #ffffff;
+        -webkit-text-size-adjust: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* ===================== CABEÇALHO ===================== */
+      header .top-bar {
+        background-color: #009970; 
+        color: #ffffff;
+        padding: 8px 20px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      header .main-header {
+        padding: 15px 20px;
+        display: flex;
+        align-items: center; 
+        justify-content: space-between; 
+        border-bottom: 1px solid #eeeeee;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      header .logo {
+        font-size: 24px;
+        font-weight: bold; 
+        color: #009970;
+        margin: 0;
+      }
+      header form {
+        width: 45%;
+        display: flex;
+        gap: 8px;
+        min-width: 250px;
+        flex: 1;
+      }
+      header form input {
+        width: 100%; 
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      header form button {
+        padding: 10px 16px;
+        background-color: #009970; 
+        color: #ffffff; 
+        border: none; 
+        border-radius: 4px; 
+        cursor: pointer;
+      }
+      header .header-links {
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      header nav.main-nav {
+        padding: 12px 20px; 
+        border-bottom: 1px solid #eeeeee;
+        display: flex; 
+        justify-content: center; 
+        gap: 20px; 
+        font-size: 14px;
+        flex-wrap: wrap;
+      }
+      header nav.main-nav a:hover {
+        color: #009970;
+        font-weight: bold;
+      }
+
+
+      /* ===================== BANNER ===================== */
+      main figure {
+        position: relative;
+        text-align: center; 
+        margin: 0;
+      }
+      main figure img {
+        width: 100%;
+        height: auto; 
+        display: block;
+        max-height: 400px;
+        object-fit: cover;
+      }
+      main figcaption {
+        position: absolute;
+        top: 40%; 
+        left: 10%; 
+        transform: translateY(-50%);
+        color: #ffffff;
+        text-align: left;
+      }
+      main figcaption h2 {
+        font-size: 28px; 
+        margin: 0 0 10px 0;
+      }
+
+      /* ===================== CATEGORIAS ===================== */
+      .categorias-section {
+        padding: 30px 25px;
+        max-width: 1400px;
+        margin: 0 auto;
+        gap: 70px;
+      }
+      .categorias-section h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+      .categorias-lista {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
+      }
+      .categorias-lista li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #eeeeee;
+        border-radius: 12px;
+        padding: 20px 15px;
+        width: 140px;
+        text-align: center;
+        background: #fff;
+        transition: 0.2s;
+      }
+      .categorias-lista li a:hover {
+        border-color: #009970;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+      .categorias-lista span.icon {
+        background-color: #e8f8f0; 
+        border-radius: 50%; 
+        width: 60px; 
+        height: 55px; 
+        margin-bottom: 8px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 24px;
+      }
+
+      /* ===================== SEÇÃO DE PRODUTOS ===================== */
+      .produtos-section {
+        max-width: 1360px;
+        margin: 30px auto;
+        padding: 0 20px;
+        
+        
+      }
+      .produtos-section h2 {
+        font-size: 20px; 
+        margin-bottom: 20px;
+        
+        
+      }
+      .produtos-grid {
+        display: flex; 
+        gap: 90px;
+        flex-wrap: wrap; 
+        justify-content: center;
+      }
+      .produto-card {
+        border: 1px solid #eeeeee; 
+        border-radius: 10px; 
+        width: 240px; 
+        padding: 15px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+      }
+      .produto-card .img-container {
+        position: relative;
+        background: #f9f9f9;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        gap: 10px;
+      }
+      .produto-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+      }
+      .produto-card .badge-off {
+        position: absolute; 
+        top: 8px; 
+        left: 8px; 
+        background-color: #e63946; 
+        color: #ffffff; 
+        padding: 4px 8px; 
+        border-radius: 4px; 
+        font-size: 12px;
+        font-weight: bold;
+        
+      }
+      .produto-card .brand {
+        font-size: 11px;
+        color: #888888;
+        margin: 10px 0 4px 0;
+        font-weight: bold;
+      }
+      .produto-card .title {
+        font-size: 14px;
+        color: #333;
+        margin: 0 0 8px 0;
+        font-weight: bold;
+      }
+      .produto-card .rating {
+        color: #f5a623; 
+        font-size: 12px; 
+        margin-bottom: 8px;
+      }
+      .produto-card .price-old {
+        color: #999999;
+        font-size: 12px;
+        text-decoration: line-through;
+        margin: 0;
+      }
+      .produto-card .price-current {
+        color: #009970; 
+        font-weight: bold; 
+        font-size: 18px; 
+        margin: 2px 0 12px 0;
+      
+      }
+      .produto-card button {
+        width: 100%; 
+        background-color: #009970; 
+        color: #ffffff; 
+        border: none; 
+        padding: 12px; /* Aumentado para melhor toque no celular */
+        border-radius: 20px; 
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        
+      }
+
+      /* ===================== BENEFÍCIOS ===================== */
+      .beneficios-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      .beneficios-section ul {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .beneficios-section li {
+        background-color: #e8f8f0; 
+        border-radius: 10px; 
+        padding: 20px; 
+        flex: 1; 
+        min-width: 250px; 
+        text-align: center;
+      }
+      .beneficios-section strong {
+        font-size: 15px; 
+        color: #009970;
+        display: block;
+        margin: 8px 0 4px 0;
+      }
+
+      /* ===================== LOGIN E CADASTRO ===================== */
+      .auth-container {
+        max-width: 420px; 
+        margin: 40px auto; 
+        padding: 20px; 
+        border-radius: 10px; 
+        background: #fff; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+      .auth-container h2 {
+        margin-top: 0; 
+        color: #009970; 
+        font-size: 22px; 
+        text-align: center;
+      } 
+      .auth-container fieldset {
+        margin-bottom: 20px; 
+        padding: 15px; 
+        border: 1px solid #ddd; 
+        border-radius: 10px;
+      }
+      .auth-container legend {
+        color: #009970; 
+        font-weight: bold; 
+        padding: 0 8px;
+      }
+      .auth-container label {
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+      .auth-container input[type="text"],
+      .auth-container input[type="email"],
+      .auth-container input[type="password"] {
+        width: 100%; 
+        padding: 12px; /* Melhor usabilidade em touch */
+        border-radius: 5px; 
+        margin-bottom: 15px; 
+        border: 1px solid #ccc;
+        font-size: 16px; /* Evita zoom automático em alguns celulares */
+      }
+      .auth-container .genero-group {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+      .auth-container button[type="submit"] {
+        width: 100%;
+        background: #009970;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      /* ===================== RODAPÉ ===================== */
+      footer {
+        background-color: #1a1a2e;
+        color: #cccccc;
+        padding: 40px 20px 20px 20px;
+        margin-top: 40px;
+      }
+      footer .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      footer h3 {
+        color: #ffffff;
+        font-size: 16px;
+        margin: 0 0 12px 0;
+      }
+      footer hr {
+        border: none;
+        border-top: 1px solid #333344;
+        max-width: 1200px;
+        margin: 30px auto;
+      }
+      footer .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* ===================== MEDIA QUERIES (RESPONSIVO CELULAR) ===================== */
+      @media (max-width: 768px) {
+        header .top-bar {
+          font-size: 11px;
+          justify-content: center;
+          text-align: center;
+        }
+        header .main-header {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        header form {
+          width: 100%;
+        }
+        header .header-links {
+          justify-content: center;
+        }
+        header nav.main-nav {
+          gap: 12px;
+          font-size: 13px;
+          padding: 10px;
+        }
+        main figcaption h2 {
+          font-size: 20px;
+        }
+        main figcaption p {
+          font-size: 12px;
+        }
+        .produto-card {
+          width: 100%; /* Cartões ocupam a largura total no celular */
+          max-width: 320px;
+        }
+        .auth-container {
+          margin: 20px 10px;
+          padding: 15px;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== CABEÇALHO ===================== -->
+    <header>
+        <div class="top-bar">
+            <span>📞 0800 777 1234 &nbsp;&nbsp; 📍 Encontre uma loja</span>
+            <span>Atendimento &nbsp;&nbsp; Sobre Nós</span>
+        </div>
+        
+        <div class="main-header">
+           <a href="farmaciaFarmaSaude.html">
+    <p class="logo">FarmaSaúde</p>
+</a>
+            <form action="#" method="get">
+                <input type="text" placeholder="Buscar produtos...">
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="header-links">
+                <a href="acessibilidade.html">♿ Acessibilidade</a>
+                <a href="login.html">👤 Entrar</a>
+                <a href="carrinho.html">🛒 Carrinho</a>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="Medicamentos.Categoria.html">Medicamentos</a>
+            <a href="Higiene.Categoria.html">Higiene</a>
+            <a href="Beleza.Categoria.html">Beleza</a>
+            <a href="Dermocosmeticos.Categoria.html">Dermocosméticos</a>
+            <a href="MamaeEbebe.Categoria.html">Mamãe e Bebê</a>
+            <a href="Vitaminas.Categoria.html">Vitaminas</a>
+            <a href="Fitness.Categoria.html">Fitness</a>
+            <a href="Ofertas.Categoria.html" style="color: #ff0000; font-weight: bold;">Ofertas</a>
+        </nav>
+    </header>
+
+    <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
+    <main>
+
+        <!-- Banner -->
+        <figure>
+            <img src="https://images.unsplash.com/photo-1758691463333-c79215e8bc3b?w=1200&h=400&fit=crop" alt="Comprimidos em promoção">
+            <figcaption>
+                <h2>Grandes Ofertas</h2>
+                <p>❤️ Até 32% de desconto em medicamentos, higiene e muito mais</p>
+            </figcaption>
+        </figure>
+
+        <!-- Categorias Populares -->
+        <section class="categorias-section">
+            <h2>Categorias Populares</h2>
+            <ul class="categorias-lista">
+                <li><a href="Medicamentos.Categoria.html"><span class="icon">💊</span>Medicamentos</a></li>
+                <li><a href="Higiene.Categoria.html"><span class="icon">🧴</span>Higiene</a></li>
+                <li><a href="Beleza.Categoria.html"><span class="icon">💄</span>Beleza</a></li>
+                <li><a href="Dermocosmeticos.Categoria.html"><span class="icon">✨</span>Dermocosméticos</a></li>
+                <li><a href="MamaeEbebe.Categoria.html"><span class="icon">👶</span>Mamãe e Bebê</a></li>
+                <li><a href="Vitaminas.Categoria.html"><span class="icon">🌿</span>Vitaminas</a></li>
+                <li><a href="Fitness.Categoria.html"><span class="icon">💪</span>Fitness</a></li>
+            </ul>
+        </section>
+
+        <!-- Ofertas do Dia -->
+        <section class="produtos-section">
+            <h2>🏷️ Ofertas do Dia</h2>
+            <div class="produtos-grid">
+
+                <article class="produto-card">
+                    <a href="Dipitona_Sódica.html">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1549477754-350cf45a1772?w=400&h=400&fit=crop" alt="Dipirona">
+                            <span class="badge-off">32% OFF</span>
+                        </div>
+                        <p class="brand">GENÉRICO</p>
+                        <p class="title">Dipirona Sódica 500mg</p>
+                        <div class="rating">★★★★☆ (234)</div>
+                        <p class="price-old">R$ 18,90</p>
+                        <p class="price-current">R$ 12,90</p>
+                    </a>
+                    <button>🛒 Adicionar</button>
+                </article>
+
+                <article class="produto-card">
+                    <a href="Protetor_Solar (2).html">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1623676714504-edd78728155e?w=400&h=400&fit=crop" alt="Protetor Solar">
+                            <span class="badge-off">23% OFF</span>
+                        </div>
+                        <p class="brand">LA ROCHE-POSAY</p>
+                        <p class="title">Protetor Solar FPS 50</p>
+                        <div class="rating">★★★★☆ (567)</div>
+                        <p class="price-old">R$ 59,90</p>
+                        <p class="price-current">R$ 45,90</p>
+                    </a>
+                    <button>🛒 Adicionar</button>
+                </article>
+
+                <article class="produto-card">
+                    <a href="Shampoo_Anticaspa (1).html">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1701992678972-d5a053ad0fb0?w=400&h=400&fit=crop" alt="Shampoo">
+                            <span class="badge-off">24% OFF</span>
+                        </div>
+                        <p class="brand">NIZORAL</p>
+                        <p class="title">Shampoo Anticaspa</p>
+                        <div class="rating">★★★★☆ (189)</div>
+                        <p class="price-old">R$ 32,90</p>
+                        <p class="price-current">R$ 24,90</p>
+                    </a>
+                    <button>🛒 Adicionar</button>
+                </article>
+
+                <article class="produto-card">
+                    <a href="VitaminaC.Produto.html">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1729701028046-2bd5b736a6d7?w=400&h=400&fit=crop" alt="Vitamina">
+                            <span class="badge-off">19% OFF</span>
+                        </div>
+                        <p class="brand">VITAMED</p>
+                        <p class="title">Vitamina C 1000mg</p>
+                        <div class="rating">★★★★☆ (423)</div>
+                        <p class="price-old">R$ 42,90</p>
+                        <p class="price-current">R$ 34,90</p>
+                    </a>
+                    <button>🛒 Adicionar</button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Benefícios -->
+        <section class="beneficios-section">
+            <ul>
+                <li>
+                    🚚<strong>Frete Grátis</strong>
+                    <span>Nas compras acima de R$ 99,00</span>
+                </li>
+                <li>
+                    💳<strong>Parcelamento</strong>
+                    <span>Em até 6x sem juros</span>
+                </li>
+                <li>
+                    🏪<strong>Retire na Loja</strong>
+                    <span>Compre online e retire na loja</span>
+                </li>
+            </ul>
+        </section>
+        <!-- Formulários (Login / Cadastro) -->
+        <section class="auth-container">
+            <h2>Farmácia Saúde+</h2>
+            
+            <form action="#" method="get">
+                <fieldset>
+                    <legend>Entrar</legend>
+                    <label for="email-login">E-mail</label>
+                    <input id="email-login" name="email" placeholder="seu@email.com" required type="email">
+                    
+                    <label for="senha-login">Senha</label>
+                    <input id="senha-login" name="senha" placeholder="Sua senha" required type="password">
+                    
+                    <button type="submit">Entrar</button>
+                </fieldset>
+            </form>
+            <p><a href="#">Esqueci minha senha</a></p>
+
+            <form action="#" method="get" style="margin-top: 20px;">
+                <fieldset>
+                    <legend>Cadastrar</legend>
+                    <label for="nome">Nome completo</label>
+                    <input id="nome" name="nome" placeholder="Nome completo" required type="text">
+                    
+                    <label for="email-cadastro">E-mail</label>
+                    <input id="email-cadastro" name="email" placeholder="seu@email.com" required type="email">
+                    
+                    <label for="senha-cadastro">Senha</label>
+                    <input id="senha-cadastro" name="senha" placeholder="Crie uma senha" required type="password">
+                    
+                    <label>Gênero:</label>
+                    <div class="genero-group">
+                        <label><input name="genero" type="radio" value="feminino" required> Feminino</label>
+                        <label><input name="genero" type="radio" value="masculino"> Masculino</label>
+                        <label><input name="genero" type="radio" value="outro"> Outro</label>
+                    </div>
+                    
+                    <button type="submit">Cadastrar</button>
+                </fieldset>
+            </form>
+        </section>
+
+    <!-- ===================== RODAPÉ ===================== -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                    <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                    <li><a href="nossas-lojas.html">Nossas Lojas</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Atendimento</h3>
+                <ul>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                    <li><a href="fale-conosco.html">Fale Conosco</a></li>
+                    <li><a href="tel:08007771234">0800 777 1234</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Políticas</h3>
+                <ul>
+                    <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="trocas-e-devolucoes.html">Trocas e Devoluções</a></li>
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Redes Sociais</h3>
+                <p>Facebook &nbsp; Instagram &nbsp; Twitter &nbsp; YouTube</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+            <h3>Formas de Pagamento</h3>
+            <p>Visa &nbsp; Mastercard &nbsp; Elo &nbsp; PIX &nbsp; Boleto</p>
+            <p>✓ Site Seguro &nbsp;&nbsp; <span style="color: #4a90e2;">✓ SSL Certificado</span></p>
+            
+            <hr style="border-color: #333344; margin: 20px 0;">
+            
+            <p><strong>FarmaSaúde Ltda.</strong> | CNPJ: 12.345.678/0001-99</p>
+            <p>Endereço: Av. Paulista, 1000 - São Paulo, SP - CEP: 01310-100</p>
+            <p>Farmacêutica Responsável: Dra. Maria Santos - CRF/SP 12345</p>
+            <p style="color: #999999; font-size: 12px; margin-top: 10px;">Todas as informações contidas neste site têm a intenção de informar e educar, não pretendendo substituir as orientações de um profissional médico ou servir como recomendação para qualquer tipo de tratamento.</p>
+            
+            <hr style="border-color: #333344; margin: 20px 0;">
+            
+            <p>Site desenvolvido por: <strong>Emanuelly • Felipe • Beatriz • Ana</strong></p>
+            <p>© 2026 FarmaSaúde. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
