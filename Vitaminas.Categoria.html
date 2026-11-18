@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaSaúde</title>
+    <style>
+      /* ===================== RESET E GERAL ===================== */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #333333; 
+        background-color: #ffffff;
+        -webkit-text-size-adjust: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* ===================== CABEÇALHO ===================== */
+      header .top-bar {
+        background-color: #009970; 
+        color: #ffffff;
+        padding: 8px 20px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      header .main-header {
+        padding: 15px 20px;
+        display: flex;
+        align-items: center; 
+        justify-content: space-between; 
+        border-bottom: 1px solid #eeeeee;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      header .logo {
+        font-size: 24px;
+        font-weight: bold; 
+        color: #009970;
+        margin: 0;
+      }
+      header form {
+        width: 45%;
+        display: flex;
+        gap: 8px;
+        min-width: 250px;
+        flex: 1;
+      }
+      header form input {
+        width: 100%; 
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      header form button {
+        padding: 10px 16px;
+        background-color: #009970; 
+        color: #ffffff; 
+        border: none; 
+        border-radius: 4px; 
+        cursor: pointer;
+      }
+      header .header-links {
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      header nav.main-nav {
+        padding: 12px 20px; 
+        border-bottom: 1px solid #eeeeee;
+        display: flex; 
+        justify-content: center; 
+        gap: 20px; 
+        font-size: 14px;
+        flex-wrap: wrap;
+      }
+      header nav.main-nav a:hover {
+        color: #009970;
+        font-weight: bold;
+      }
+           /* ===================== SEÇÃO DE PRODUTOS ===================== */
+      .produtos-section {
+        max-width: 1360px;
+        margin: 30px auto;
+        padding: 0 20px;
+        
+        
+      }
+      .produtos-section h2 {
+        font-size: 20px; 
+        margin-bottom: 20px;
+        
+        
+      }
+      .produtos-grid {
+        display: flex; 
+        gap: 90px;
+        flex-wrap: wrap; 
+        justify-content: center;
+      }
+      .produto-card {
+        border: 1px solid #eeeeee; 
+        border-radius: 10px; 
+        width: 240px; 
+        padding: 15px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+      }
+      .produto-card .img-container {
+        position: relative;
+        background: #f9f9f9;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        gap: 10px;
+      }
+      .produto-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+      }
+      .produto-card .badge-off {
+        position: absolute; 
+        top: 8px; 
+        left: 8px; 
+        background-color: #e63946; 
+        color: #ffffff; 
+        padding: 4px 8px; 
+        border-radius: 4px; 
+        font-size: 12px;
+        font-weight: bold;
+        
+      }
+      .produto-card .brand {
+        font-size: 11px;
+        color: #888888;
+        margin: 10px 0 4px 0;
+        font-weight: bold;
+      }
+      .produto-card .title {
+        font-size: 14px;
+        color: #333;
+        margin: 0 0 8px 0;
+        font-weight: bold;
+      }
+      .produto-card .rating {
+        color: #f5a623; 
+        font-size: 12px; 
+        margin-bottom: 8px;
+      }
+      .produto-card .price-old {
+        color: #999999;
+        font-size: 12px;
+        text-decoration: line-through;
+        margin: 0;
+      }
+      .produto-card .price-current {
+        color: #009970; 
+        font-weight: bold; 
+        font-size: 18px; 
+        margin: 2px 0 12px 0;
+      
+      }
+      .produto-card button {
+        width: 100%; 
+        background-color: #009970; 
+        color: #ffffff; 
+        border: none; 
+        padding: 12px; /* Aumentado para melhor toque no celular */
+        border-radius: 20px; 
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        
+      }
+
+          /* ===================== RODAPÉ ===================== */
+      footer {
+        background-color: #1a1a2e;
+        color: #cccccc;
+        padding: 40px 20px 20px 20px;
+        margin-top: 40px;
+      }
+      footer .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      footer h3 {
+        color: #ffffff;
+        font-size: 16px;
+        margin: 0 0 12px 0;
+      }
+      footer hr {
+        border: none;
+        border-top: 1px solid #333344;
+        max-width: 1200px;
+        margin: 30px auto;
+      }
+      footer .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      </style>
+</head>
+    <header>
+        <div class="top-bar">
+            <span>📞 0800 777 1234 &nbsp;&nbsp; 📍 Encontre uma loja</span>
+            <span>Atendimento &nbsp;&nbsp; Sobre Nós</span>
+        </div>
+        
+        <div class="main-header">
+           <a href="farmaciaFarmaSaude.html">
+    <p class="logo">FarmaSaúde</p>
+</a>
+            <form action="#" method="get">
+                <input type="text" placeholder="Buscar produtos...">
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="header-links">
+                <a href="Acessibilidade.html">♿ Acessibilidade</a>
+                <a href="login.html">👤 Entrar</a>
+                <a href="carrinho.html">🛒 Carrinho</a>
+            </div>
+        </div>
+
+            <nav class="main-nav">
+            <a href="Medicamentos.Categoria.html">Medicamentos</a>
+            <a href="Higiene.Categoria.html">Higiene</a>
+            <a href="Beleza.Categoria.html">Beleza</a>
+            <a href="Dermocosmeticos.Categoria.html">Dermocosméticos</a>
+            <a href="MamaeEbebe.Categoria.html">Mamãe e Bebê</a>
+            <a href="Vitaminas.Categoria.html">Vitaminas</a>
+            <a href="Fitness.Categoria.html">Fitness</a>
+            <a href="Ofertas.Categoria.html" style="color: #ff0000; font-weight: bold;">Ofertas</a>
+        </nav>
+    </header>
+    <main>
+              <section class="produtos-section">
+            
+            <div class="produtos-grid">
+                </article>
+                       <article class="produto-card">
+                    <a href="VitaminaC.Produto.html">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1729701028046-2bd5b736a6d7?w=400&h=400&fit=crop" alt="Vitamina">
+                            <span class="badge-off">19% OFF</span>
+                        </div>
+                        <p class="brand">VITAMED</p>
+                        <p class="title">Vitamina C 1000mg</p>
+                        <div class="rating">★★★★☆ (423)</div>
+                        <p class="price-old">R$ 42,90</p>
+                        <p class="price-current">R$ 34,90</p>
+                    </a>
+                    <button>🛒 Adicionar</button>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                    <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                    <li><a href="nossas-lojas.html">Nossas Lojas</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Atendimento</h3>
+                <ul>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                    <li><a href="fale-conosco.html">Fale Conosco</a></li>
+                    <li><a href="tel:08007771234">0800 777 1234</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Políticas</h3>
+                <ul>
+                    <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="trocas-e-devolucoes.html">Trocas e Devoluções</a></li>
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Redes Sociais</h3>
+                <p>Facebook &nbsp; Instagram &nbsp; Twitter &nbsp; YouTube</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+            <h3>Formas de Pagamento</h3>
+            <p>Visa &nbsp; Mastercard &nbsp; Elo &nbsp; PIX &nbsp; Boleto</p>
+            <p>✓ Site Seguro &nbsp;&nbsp; <span style="color: #4a90e2;">✓ SSL Certificado</span></p>
+            
+            <hr style="border-color: #333344; margin: 20px 0;">
+            
+            <p><strong>FarmaSaúde Ltda.</strong> | CNPJ: 12.345.678/0001-99</p>
+            <p>Endereço: Av. Paulista, 1000 - São Paulo, SP - CEP: 01310-100</p>
+            <p>Farmacêutica Responsável: Dra. Maria Santos - CRF/SP 12345</p>
+            <p style="color: #999999; font-size: 12px; margin-top: 10px;">Todas as informações contidas neste site têm a intenção de informar e educar, não pretendendo substituir as orientações de um profissional médico ou servir como recomendação para qualquer tipo de tratamento.</p>
+            
+            <hr style="border-color: #333344; margin: 20px 0;">
+            
+            <p>Site desenvolvido por: <strong>Emanuelly • Felipe • Beatriz • Ana</strong></p>
+            <p>© 2026 FarmaSaúde. Todos os direitos reservados.</p>
+        </div>
+    </footer>

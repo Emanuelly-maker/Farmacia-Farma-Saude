@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessibilidade - FarmaSaúde</title>
+    <style>
+      /* ===================== RESET E GERAL ===================== */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #333333;
+        background-color: #f9f9f9;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ===================== CABEÇALHO VERDE ===================== */
+      header .top-bar {
+        background-color: #009970;
+        color: #ffffff;
+        padding: 10px 20px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header .main-header {
+        background-color: #ffffff;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #eeeeee;
+      }
+      header .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #009970;
+        margin: 0;
+      }
+      .btn-voltar {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: #009970;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.2s;
+      }
+      .btn-voltar:hover,
+      .btn-voltar:focus {
+        background-color: #007d5b;
+        outline: 3px solid #80ccb8;
+      }
+
+      /* ===================== CONTEÚDO PRINCIPAL ===================== */
+      main {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        color: #009970;
+        font-size: 26px;
+        margin-top: 0;
+        border-bottom: 2px solid #e8f8f0;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #222222;
+        font-size: 19px;
+        margin-top: 25px;
+      }
+      p {
+        font-size: 15px;
+        color: #444444;
+      }
+
+      /* ===================== CARDS DE RECURSOS ===================== */
+      .recursos-lista {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+      .recursos-lista li {
+        background-color: #e8f8f0;
+        border-left: 4px solid #009970;
+        padding: 18px;
+        border-radius: 8px;
+      }
+      .recursos-lista strong {
+        display: block;
+        color: #007d5b;
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      /* ===================== TABELA DE ATALHOS ===================== */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        font-size: 14px;
+      }
+      th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #009970;
+        color: #ffffff;
+      }
+      kbd {
+        background-color: #eeeeee;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: monospace;
+        font-size: 13px;
+      }
+
+      /* ===================== RESPONSIVO CELULAR ===================== */
+      @media (max-width: 600px) {
+        header .top-bar {
+          flex-direction: column;
+          gap: 5px;
+          text-align: center;
+        }
+        main {
+          margin: 20px 15px;
+          padding: 20px;
+        }
+        h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== CABEÇALHO ===================== -->
+    <header>
+        <div class="top-bar">
+            <span>📞 0800 777 1234 &nbsp;&nbsp; 📍 Encontre uma loja</span>
+            <span>Atendimento &nbsp;&nbsp; Sobre Nós</span>
+        </div>
+
+        <div class="main-header">
+            <p class="logo">FarmaSaúde</p>
+            <a href="farmaciaFarmaSaude.html" class="btn-voltar" aria-label="Voltar para a página anterior">⬅ Voltar</a>
+        </div>
+    </header>
+
+    <!-- ===================== CONTEÚDO ===================== -->
+    <main>
+        <h1>♿ Acessibilidade na FarmaSaúde</h1>
+        <p>Nosso portal foi desenvolvido seguindo boas práticas de acessibilidade digital para garantir que todas as pessoas consigam navegar, buscar medicamentos e realizar compras com autonomia.</p>
+
+        <h2>Recursos Disponíveis</h2>
+        <ul class="recursos-lista">
+            <li>
+                <strong>Contraste de Cores</strong>
+                <span>Textos escuros sobre fundos claros e botões com alto contraste para facilitar a leitura.</span>
+            </li>
+            <li>
+                <strong>Navegação por Teclado</strong>
+                <span>Todos os links, campos e botões podem ser acessados usando apenas a tecla Tab.</span>
+            </li>
+            <li>
+                <strong>Leitores de Tela</strong>
+                <span>Uso de tags semânticas e descrições alternativas em imagens e botões importantes.</span>
+            </li>
+        </ul>
+
+        <h2>Atalhos do Navegador</h2>
+        <p>Você também pode ajustar a visualização diretamente pelo seu teclado:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ação</th>
+                    <th>Atalho (Windows / Linux)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aumentar o tamanho da fonte (Zoom)</td>
+                    <td><kbd>Ctrl</kbd> + <kbd>+</kbd></td>
+                </tr>
+                <tr>
+                    <td>Diminuir o tamanho da fonte</td>
+                    <td><kbd>Ctrl</kbd> + <kbd>-</kbd></td>
+                </tr>
+                <tr>
+                    <td>Restaurar tamanho original</td>
+                    <td><kbd>Ctrl</kbd> + <kbd>0</kbd></td>
+                </tr>
+                <tr>
+                    <td>Avançar entre links e botões</td>
+                    <td><kbd>Tab</kbd></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+</body>
+</html>
